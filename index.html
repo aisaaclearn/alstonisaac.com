@@ -113,6 +113,41 @@
       .hero{ grid-template-columns: 1fr; text-align:left; }
       .headshot{ justify-self:start; order:-1; }
     }
+    /* Outside the Office */
+.outside-cards {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.outside-cards section {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  backdrop-filter: saturate(120%);
+}
+.outside-cards h3 { margin-top: 0.4rem; }
+
+.gallery.outside-gallery {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.gallery.outside-gallery figure {
+  margin: 0;
+}
+.gallery.outside-gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.gallery.outside-gallery figcaption {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.4rem;
+}
+
   </style>
 </head>
 <body>
@@ -129,6 +164,7 @@
       <a href="#skills">Skills</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+      <a href="#outside-office">Outside the Office</a>
     </nav>
     <div class="footer">© <span id="y"></span> Alston Isaac</div>
   </aside>
@@ -221,6 +257,62 @@
     }, {rootMargin:"-50% 0px -45% 0px", threshold:0});
     sections.forEach(s=>s && obs.observe(s));
   </script>
+  <!-- Outside the Office -->
+<section id="outside-office" class="wrapper style2 fade-up">
+  <div class="inner">
+    <h2>Outside the Office</h2>
+    <p>
+      When I’m not building and securing systems, I’m creating with movement and with my hands.
+      I freestyle <strong>breakdance (solo)</strong> and practice <strong>West Coast Swing (partner dance)</strong>.
+      I also enjoy 3D printing small functional tools and art pieces, plus the occasional craft project.
+      These hobbies sharpen my focus, timing, and patience—skills.
+    </p>
+
+    <div class="features outside-cards">
+      <section>
+        <span class="icon solid fa-shoe-prints" aria-hidden="true"></span>
+        <h3>Freestyle Breakdance</h3>
+        <p>
+          Solo freestyle—no choreography—focused on musicality, footwork, and flow.
+          I enjoy improvising to whatever the track gives me and pushing balance + control.
+        </p>
+      </section>
+      <section>
+        <span class="icon solid fa-people-arrows" aria-hidden="true"></span>
+        <h3>West Coast Swing</h3>
+        <p>
+          A smooth partner dance built on connection and timing. I practice lead skills,
+          clean technique, and stretchy rhythms—great for listening and teamwork.
+        </p>
+      </section>
+      <section>
+        <span class="icon solid fa-cubes" aria-hidden="true"></span>
+        <h3>3D Printing & Crafts</h3>
+        <p>
+          Ender 3 V2 tinkering, custom STL tweaks, and utility prints—plus small handmade projects.
+          It’s my sandbox for iteration, measurement, and finish quality.
+        </p>
+      </section>
+    </div>
+
+    <!-- Optional mini gallery (swap src with your images) -->
+    <div class="gallery outside-gallery">
+      <figure>
+        <img src="images/outside/breakdance-1.jpg" alt="Freestyle breakdance freeze pose" />
+        <figcaption>Freestyle break—musicality and balance.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/outside/wcs-1.jpg" alt="West Coast Swing social dance moment" />
+        <figcaption>West Coast Swing—connection and timing.</figcaption>
+      </figure>
+      <figure>
+        <img src="images/outside/print-1.jpg" alt="3D printed part on Ender 3 V2 bed" />
+        <figcaption>3D print—functional part, PLA+.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
 
