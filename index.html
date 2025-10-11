@@ -19,8 +19,49 @@
       --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
     @media (prefers-color-scheme: light){
-      :root{ --bg:#f7f8fc; --panel:#ffffff; --text:#151824; --muted:#5b6175; --card:#ffffff; }
-    }
+  :root{
+    --bg: #f7f8fc;
+    --panel: rgba(255, 255, 255, 0.6);
+    --text: #2b2e3a;             /* darker, readable text */
+    --muted: #667085;            /* foggy gray text */
+    --card: rgba(255,255,255,0.7);
+    --brand: #7c5cff;
+    --brand-2: #23a7ff;
+  }
+
+  body {
+    background: radial-gradient(1200px 700px at 60% -10%, rgba(124,92,255,.10), transparent 60%),
+                radial-gradient(800px 500px at 20% 10%, rgba(35,167,255,.08), transparent 60%),
+                var(--bg);
+    color: var(--text);
+  }
+
+  /* Foggy chips for light mode */
+  .chip {
+    background: rgba(255, 255, 255, 0.45);
+    color: #2b2e3a;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Contact section readability in light mode */
+  #contact {
+    background: rgba(255, 255, 255, 0.55);
+    color: #2b2e3a;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(6px);
+  }
+
+  #contact a {
+    color: #0077cc;
+  }
+
+  #contact a:hover {
+    color: #005fa3;
+  }
+}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
