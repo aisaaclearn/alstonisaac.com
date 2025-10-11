@@ -72,10 +72,17 @@
     .hero h1{ font-size: clamp(2.2rem, 4.2vw, 4rem); line-height:1.05; margin:0 0 14px }
     .hero p{ font-size: clamp(1rem, 1.4vw, 1.2rem); color:var(--muted); max-width:52ch }
     .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px }
-    .chip{
-      padding:8px 12px; border-radius:999px; font-weight:600; font-size:.9rem; color:white;
-      background: linear-gradient(135deg,var(--brand),var(--brand-2));
-      box-shadow: var(--shadow);
+    .chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .9rem;
+  color: #e8ebf3; /* foggy text */
+  background: rgba(255, 255, 255, 0.15); /* translucent bubble */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
     }
     .cta{ margin-top:22px; display:flex; gap:12px }
     .btn{
