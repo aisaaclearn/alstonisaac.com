@@ -264,6 +264,54 @@
     background: #095a91;
   }
     
+    /* ==== Light mode fixes (place at the end of <style>) ==== */
+@media (prefers-color-scheme: light){
+  /* Softer (foggy) but readable text everywhere */
+  :root{
+    --text:#2b2e3a;        /* main text */
+    --muted:#667085;       /* foggy gray */
+  }
+  body{ color:var(--text); }
+
+  /* Chips (“bubbles”) under the hero */
+  .chip{
+    /* darker translucent base so it separates from the pale bg */
+    background: rgba(0,0,0,.08);
+    color: #2b2e3a;                 /* readable on light bg */
+    border: 1px solid rgba(0,0,0,.14);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  }
+
+  /* CTA buttons to match the foggy look */
+  .btn{
+    background: rgba(255,255,255,.85);
+    color: #1f2430;
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .btn.ghost{
+    background: transparent;
+    color: #2b2e3a;
+    outline: 2px solid rgba(0,0,0,.18);
+  }
+
+  /* “Get in touch” section readability + foggy panel */
+  #contact{
+    background: rgba(255,255,255,.6);
+    color: #2b2e3a;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius:16px;
+    padding:2rem;
+    backdrop-filter: blur(6px);
+  }
+  #contact a{
+    color:#0b72b9;
+  }
+  #contact a:hover{
+    color:#095a91;
+  }
+}
+    
   </style>
 </head>
 <body>
