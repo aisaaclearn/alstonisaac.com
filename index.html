@@ -311,6 +311,50 @@
     color:#095a91;
   }
 }
+
+    /* About layout */
+.tagline { margin-top: .25rem; margin-bottom: 1rem; opacity: .85; }
+
+/* 2-column on desktop, single column on mobile */
+.about-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;           /* mobile default */
+}
+
+/* Limit line length and improve readability */
+.about-body {
+  max-width: 68ch;                      /* key: narrower measure */
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Quick facts sidebar */
+.about-aside {
+  display: none;                         /* hidden on mobile */
+}
+
+.factlist {
+  list-style: none;
+  margin: 0;
+  padding: .75rem .9rem;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  background: rgba(255,255,255,.03);
+  display: grid;
+  gap: .5rem;
+}
+.factlist li { font-size: .95rem; opacity: .95; }
+.factlist strong { opacity: 1; }
+
+/* Turn on the sidebar for larger screens */
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 68ch) 280px;  /* comfy text + slim sidebar */
+    align-items: start;
+  }
+  .about-aside { display: block; }
+}
     
   </style>
 </head>
@@ -578,6 +622,54 @@
   </div>
 </section>
 
+<script>
+  // Map section IDs to their nav links
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+
+  const linkFor = id => navLinks.find(a => a.getAttribute('href') === '#' + id);
+
+  function setActive(id) {
+    navLinks.forEach(a => a.classList.remove('active'));
+    const link = linkFor(id);
+    if (link) link.classList.add('active');
+  }
+
+  // Observe when sections are meaningfully in view
+  const observer = new IntersectionObserver((entries) => {
+    // pick the entry with the largest intersection ratio
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+    if (visible) {
+      setActive(visible.target.id);
+    }
+  }, {
+    root: null,
+    threshold: 0.5,          // ~50% of section must be in view
+    rootMargin: '0px 0px -10% 0px' // helps not to “stick” too early/late
+  });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Fallback: when scrolled to the very bottom, force last section active
+  function bottomFallback() {
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+    if (nearBottom) setActive(sections[sections.length - 1].id);
+  }
+  window.addEventListener('scroll', bottomFallback);
+  window.addEventListener('resize', bottomFallback);
+
+  // If you use anchor clicks, also update active immediately
+  navLinks.forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.forEach(n => n.classList.remove('active'));
+      a.classList.add('active');
+    });
+  });
+</script>
+  
 </body>
 </html>
 
